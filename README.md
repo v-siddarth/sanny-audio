@@ -1,4 +1,5 @@
-Terminal 1: Setting Up Backend 
+Terminal 1: Setting Up Backend
+
 ```sh
 cd backend
 npm install
@@ -13,17 +14,21 @@ MONGO_URL = mongodb://127.0.0.1/ecommerce
 
 SECRET_KEY = 'secret-key'
 ```
+
 Instead of this link write your database link.
 
 Terminal 2: Setting Up Frontend
+
 ```sh
 cd frontend
 npm install
 npm start
 ```
-Now, navigate to `localhost:3000` in your browser. 
+
+Now, navigate to `localhost:3000` in your browser.
 The Backend API will be running at `localhost:5000`.
 <br>
+
 # Error Solution
 
 If you encounter a network error while signing up, follow these steps to resolve it:
@@ -35,3 +40,5 @@ If you encounter a network error while signing up, follow these steps to resolve
 ```javascript
 const REACT_APP_BASE_URL = "http://localhost:5000";
 ```
+
+branch created
