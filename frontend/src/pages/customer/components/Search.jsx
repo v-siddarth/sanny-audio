@@ -7,17 +7,13 @@ import { getSearchedProducts } from '../../../redux/userHandle';
 
 const Search = () => {
 
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const location = useLocation();
-
-    const [searchTerm, setSearchTerm] = useState("")
+    const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearch = () => {
         dispatch(getSearchedProducts("searchProduct", searchTerm));
-
         if (location.pathname !== "/ProductSearch") {
             navigate("/ProductSearch");
         }
@@ -26,7 +22,7 @@ const Search = () => {
     return (
         <SearchContainer>
             <InputSearchBase
-                placeholder="Search for products, brands and more"
+                placeholder="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => {
@@ -35,32 +31,41 @@ const Search = () => {
                     }
                 }}
             />
-            <SearchIconWrapper>
-                <SearchIcon sx={{ color: "#4d1c9c" }} />
+            <SearchIconWrapper onClick={handleSearch}>
+                <SearchIcon sx={{ color: "#fff", fontSize: 20 }} />
             </SearchIconWrapper>
         </SearchContainer>
     )
 }
 
 const SearchContainer = styled(Box)`
-  border-radius: 2px;
+  border-radius: 15px; /* Adjusted for a smaller appearance */
   margin-left: 10px;
-  width: 38%;
-  background-color: #fff;
+  width: 100%;
+  max-width: 250px; /* Adjusted width */
+  background: linear-gradient(45deg, #ff007f, #ff6f00);
   display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 `;
 
 const SearchIconWrapper = styled(Box)`
-  margin-left: auto;
-  padding: 5px;
+  padding: 6px; /* Smaller padding */
   display: flex;
-  color: blue;
+  align-items: center;
+  background-color: #004e92;
+  border-radius: 0 15px 15px 0; /* Adjusted to match the reduced height */
+  cursor: pointer;
 `;
 
 const InputSearchBase = styled(InputBase)`
-  font-size: unset;
+  font-size: 12px; /* Smaller font size */
   width: 100%;
-  padding-left: 20px;
+  padding: 6px 12px; /* Further reduced padding */
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #333;
 `;
 
 export default Search;

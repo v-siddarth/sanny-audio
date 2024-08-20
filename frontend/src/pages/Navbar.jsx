@@ -10,11 +10,11 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+// import LocalMallIcon from '@mui/icons-material/LocalMall';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Login, Logout, Shop2, Store } from '@mui/icons-material';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import { Avatar, Badge, Divider, Drawer, ListItemIcon } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components';
@@ -24,6 +24,7 @@ import Cart from './customer/components/Cart';
 import Search from './customer/components/Search';
 import ProductsMenu from './customer/components/ProductsMenu';
 import { updateCustomer } from '../redux/userHandle';
+
 
 const Navbar = () => {
     const { currentUser, currentRole } = useSelector(state => state.user);
@@ -91,7 +92,7 @@ const Navbar = () => {
 
     return (
         <AppBar position="sticky">
-            <Container maxWidth="xl" sx={{ backgroundColor: "#4d1c9c" }}>
+           <Container maxWidth="xl" sx={{ background: "linear-gradient(90deg, #000428 0%, #004e92 100%)" }}>
                 <Toolbar disableGutters>
 
                     {/* MOBILE */}
@@ -108,7 +109,6 @@ const Navbar = () => {
                             <SearchIcon />
                         </IconButton>
                     </Box>
-
                     <HomeContainer>
                         <Typography
                             variant="h5"
@@ -133,7 +133,7 @@ const Navbar = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                SHOPCART
+                                SANNY AUDIO
                             </NavLogo>
                         </Typography>
                     </HomeContainer>
@@ -212,17 +212,20 @@ const Navbar = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                                {/* <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
 
-                                SHOPCART
+                                SANNY AUDIO
                             </NavLogo>
                         </Typography>
                     </HomeContainer>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, }}>
-                        <Search />
+                        <ProductsMenu dropName="Home" />
+                        <ProductsMenu dropName="Contact" />
                         <ProductsMenu dropName="Categories" />
                         <ProductsMenu dropName="Products" />
+                        <ProductsMenu dropName="About Us" />
+                        <Search />
                     </Box>
 
                     {currentRole === null &&
@@ -285,7 +288,7 @@ const Navbar = () => {
                                     aria-haspopup="true"
                                     aria-expanded={open ? 'true' : undefined}
                                 >
-                                    <Avatar sx={{ width: 32, height: 32, backgroundColor: "#8970dc" }}>
+                                    <Avatar sx={{ width: 32, height: 32, backgroundColor: "#E100FF " }}>
                                         {String(currentUser.name).charAt(0)}
                                     </Avatar>
                                 </IconButton>
@@ -366,6 +369,7 @@ const styles = {
         overflow: 'visible',
         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
         mt: 1.5,
+        boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.1), 0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05)',
         '& .MuiAvatar-root': {
             width: 32,
             height: 32,

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress } from '@mui/material';
+import { Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress,} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { LightPurpleButton } from '../utils/buttonStyles';
 import { authUser } from '../redux/userHandle';
@@ -217,9 +217,12 @@ const AuthenticationPage = ({ mode, role }) => {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                style={{"color": "#4d1c9c", }}
                             >
                                 {loader ? <CircularProgress size={24} color="inherit" /> : mode}
                             </LightPurpleButton>
+
+
                             <Grid container>
                                 <Grid>
                                     {mode === "Register" ?

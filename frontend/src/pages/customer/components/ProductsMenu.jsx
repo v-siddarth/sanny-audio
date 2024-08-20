@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
+// import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
 import { LightPurpleButton } from '../../../utils/buttonStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, getSearchedProducts } from '../../../redux/userHandle';
@@ -64,7 +64,7 @@ const ProductsMenu = ({ dropName }) => {
                 aria-expanded={open ? 'true' : undefined}
                 disableElevation
                 onClick={handleClick}
-                endIcon={open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                endIcon={null}
             >
                 {dropName}
             </LightPurpleButton>
