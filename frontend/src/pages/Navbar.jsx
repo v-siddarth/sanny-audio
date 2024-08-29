@@ -10,11 +10,10 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import LocalMallIcon from '@mui/icons-material/LocalMall';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Login, Logout, Shop2, Store } from '@mui/icons-material';
+import { Login, Logout, Shop2 } from '@mui/icons-material';
 
-import { Link , useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, Badge, Divider, Drawer, ListItemIcon } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components';
@@ -24,7 +23,7 @@ import Cart from './customer/components/Cart';
 import Search from './customer/components/Search';
 import ProductsMenu from './customer/components/ProductsMenu';
 import { updateCustomer } from '../redux/userHandle';
-
+import { LightPurpleButton } from '../utils/buttonStyles';
 
 const Navbar = () => {
     const { currentUser, currentRole } = useSelector(state => state.user);
@@ -41,12 +40,11 @@ const Navbar = () => {
         }
     }, [currentRole, currentUser, dispatch])
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const [anchorElSign, setAnchorElSign] = React.useState(null);
+
 
     const open = Boolean(anchorElUser);
-    const openSign = Boolean(anchorElSign);
+
 
     const [isCartOpen, setIsCartOpen] = React.useState(false);
 
@@ -59,14 +57,6 @@ const Navbar = () => {
         setIsCartOpen(false);
     };
 
-    // Navigation Menu
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     // User Menu
     const handleOpenUserMenu = (event) => {
@@ -78,21 +68,15 @@ const Navbar = () => {
     };
 
     // Signin Menu
-    const handleOpenSigninMenu = (event) => {
-        setAnchorElSign(event.currentTarget);
-    };
-
-    const handleCloseSigninMenu = () => {
-        setAnchorElSign(null);
-    };
 
     const homeHandler = () => {
         navigate("/")
     };
 
+
     return (
         <AppBar position="sticky">
-           <Container maxWidth="xl" sx={{ background: "linear-gradient(90deg, #000428 0%, #004e92 100%)" }}>
+            <Container maxWidth="xl" sx={{ background: 'linear-gradient(90deg, #000428 0%, #004e92 100%)' }}>
                 <Toolbar disableGutters>
 
                     {/* MOBILE */}
@@ -109,6 +93,7 @@ const Navbar = () => {
                             <SearchIcon />
                         </IconButton>
                     </Box>
+
                     <HomeContainer>
                         <Typography
                             variant="h5"
@@ -146,43 +131,11 @@ const Navbar = () => {
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
                                     aria-haspopup="true"
-                                    onClick={handleOpenNavMenu}
+                                    onClick={() => {navigate("/Customerlogin")}}
                                     color="inherit"
                                 >
                                     <Login />
                                 </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorElNav}
-                                    anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'left',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'left',
-                                    }}
-                                    open={Boolean(anchorElNav)}
-                                    onClose={handleCloseNavMenu}
-                                    onClick={handleCloseUserMenu}
-                                    sx={{
-                                        display: { xs: 'block', md: 'none' },
-                                    }}
-                                >
-                                    <MenuItem onClick={() => {
-                                        navigate("/Customerlogin")
-                                        handleCloseNavMenu()
-                                    }}>
-                                        <Typography textAlign="center">Sign in as customer</Typography>
-                                    </MenuItem>
-                                    <MenuItem onClick={() => {
-                                        navigate("/Sellerlogin")
-                                        handleCloseNavMenu()
-                                    }}>
-                                        <Typography textAlign="center">Sign in as seller</Typography>
-                                    </MenuItem>
-                                </Menu>
                             </>
                         </Box>
                     }
@@ -212,59 +165,28 @@ const Navbar = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                {/* <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-
                                 SANNY AUDIO
                             </NavLogo>
                         </Typography>
                     </HomeContainer>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, }}>
-                        <ProductsMenu dropName="Home" />
-                        <ProductsMenu dropName="Contact" />
+                        <LightPurpleButton onClick={() => navigate('/')}>Home</LightPurpleButton>
+                        <LightPurpleButton onClick={() => navigate('/aboutus')}>About Us</LightPurpleButton>
+                        <LightPurpleButton onClick={() => navigate('/contact')}>Contact</LightPurpleButton>
                         <ProductsMenu dropName="Categories" />
                         <ProductsMenu dropName="Products" />
-                        <ProductsMenu dropName="About Us" />
                         <Search />
                     </Box>
-
+                            
                     {currentRole === null &&
                         <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, }}>
                             <Button
-                                onClick={handleOpenSigninMenu}
+                                onClick={() => navigate("/Customerlogin")}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Sign in
-                            </Button>
-                            <Menu
-                                anchorEl={anchorElSign}
-                                id="menu-appbar"
-                                open={openSign}
-                                onClose={handleCloseSigninMenu}
-                                onClick={handleCloseSigninMenu}
-                                PaperProps={{
-                                    elevation: 0,
-                                    sx: styles.styledPaper,
-                                }}
-                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                            >
-                                <MenuItem onClick={() => navigate("/Customerlogin")}>
-                                    <Avatar />
-                                    <Link to="/Customerlogin">
-                                        Sign in as customer
-                                    </Link>
-                                </MenuItem>
-                                <Divider />
-                                <MenuItem onClick={() => navigate("/Sellerlogin")}>
-                                    <ListItemIcon>
-                                        <Store fontSize="small" />
-                                    </ListItemIcon>
-                                    <Link to="/Sellerlogin">
-                                        Sign in as seller
-                                    </Link>
-                                </MenuItem>
-                            </Menu>
+                            </Button> 
                         </Box>
                     }
 
@@ -288,7 +210,7 @@ const Navbar = () => {
                                     aria-haspopup="true"
                                     aria-expanded={open ? 'true' : undefined}
                                 >
-                                    <Avatar sx={{ width: 32, height: 32, backgroundColor: "#E100FF " }}>
+                                    <Avatar sx={{ width: 32, height: 32, backgroundColor: "#8970dc" }}>
                                         {String(currentUser.name).charAt(0)}
                                     </Avatar>
                                 </IconButton>
@@ -369,7 +291,6 @@ const styles = {
         overflow: 'visible',
         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
         mt: 1.5,
-        boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.1), 0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05)',
         '& .MuiAvatar-root': {
             width: 32,
             height: 32,

@@ -1,55 +1,56 @@
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { styled } from '@mui/material';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 import { bannerData } from '../utils/products';
 
 const Banner = () => {
+    const settings = {
+        infinite: true,
+        speed: 1000,
+        fade: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024, // Desktop breakpoint
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+            {
+                breakpoint: 768, // Tablet breakpoint
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+            {
+                breakpoint: 480, // Mobile breakpoint
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    };
+
     return (
-        <Carousel
-            swipeable={false}
-            draggable={false}
-            responsive={responsive}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={4000}
-            keyBoardControl={true}
-            showDots={true}
-            slidesToSlide={1}
-            customTransition="all .5"
-            containerClass="carousel-container"
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-        >
+        <Slider {...settings}>
             {bannerData.map((image) => (
                 <Image src={image.url} alt={image.alt} key={image._id} />
             ))}
-        </Carousel>
+        </Slider>
     );
 };
 
 export default Banner;
 
-
-const responsive = {
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 1,
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 1,
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1,
-    },
-};
-
 const Image = styled('img')(({ theme }) => ({
     width: '100%',
-    height: 230,
+    height: 500,
+    objectFit: 'cover', 
     [theme.breakpoints.down('sm')]: {
-        objectFit: 'cover',
         height: 180,
     },
 }));

@@ -92,11 +92,11 @@ const DealText = styled(Typography)`
 
 const ViewAllButton = styled(Button)`
     margin-left: auto;
-    background-color: #4d1c9c;
-    border-radius: 2px;
+    background-color: #270843;
+    border-radius: 10px;
     font-size: 13px;
     &:hover {
-      background-color: #7a1ccb;
+      background-color: #3f1068;
     }
 `;
 

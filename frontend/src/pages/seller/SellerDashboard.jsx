@@ -12,7 +12,7 @@ import ListIcon from '@mui/icons-material/List';
 import CloseIcon from '@mui/icons-material/Close';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { AppBar, Drawer, NavLogo } from '../../utils/styles';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+
 import Logout from '../Logout';
 import SideBar from './components/SideBar';
 import SellerHomePage from './pages/SellerHomePage';
@@ -89,9 +89,9 @@ const SellerDashboard = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                                
 
-                                SHOPCART
+                                SANNY AUDIO
                             </NavLogo>
                         </Typography>
 
@@ -120,9 +120,9 @@ const SellerDashboard = () => {
                                 duration={500}
                                 onClick={homeHandler}
                             >
-                                <LocalMallIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                                
 
-                                SHOPCART
+                                SANNY AUDIO
                             </NavLogo>
                         </Typography>
 

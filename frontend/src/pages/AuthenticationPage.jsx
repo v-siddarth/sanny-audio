@@ -11,7 +11,7 @@ import Popup from '../components/Popup';
 
 const AuthenticationPage = ({ mode, role }) => {
 
-    const bgpic = "https://images.pexels.com/photos/1121097/pexels-photo-1121097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    const bgpic = "https://i.postimg.cc/d3WYt6nV/sanny-bannar.png"
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

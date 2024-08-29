@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../redux/userHandle';
 import ProductsMenu from './customer/components/ProductsMenu';
 import { NewtonsCradle } from '@uiball/loaders';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LightPurpleButton } from '../utils/buttonStyles';
 
 const Home = () => {
   const adURL =
@@ -17,6 +18,7 @@ const Home = () => {
   const { productData, responseProducts, error } = useSelector((state) => state.user);
 
   const [showNetworkError, setShowNetworkError] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(getProducts());
@@ -39,9 +41,11 @@ const Home = () => {
           display: 'none',
           '@media (max-width: 600px)': {
             display: 'flex',
+            background: 'linear-gradient(90deg, #000428 0%, #004e92 100%)'
           },
         }}
       >
+        <LightPurpleButton onClick={() => navigate('/')}>Home</LightPurpleButton>
         <ProductsMenu dropName="Categories" />
         <ProductsMenu dropName="Products" />
       </Container>
@@ -105,11 +109,12 @@ const StyledContainer = styled(Container)`
 `;
 
 const BannerBox = styled(Box)`
-  padding: 20px 10px;
-  background: #F2F2F2;
+  ${'' /* padding: 20px 10px; */}
+  background: #000428;
 `;
 
 const Component = styled(Box)`
+  background: #000428;
   display: flex;
 `;
 
@@ -122,7 +127,7 @@ const LeftComponent = styled(Box)(({ theme }) => ({
 
 const RightComponent = styled(Box)(({ theme }) => ({
   marginTop: 10,
-  background: '#FFFFFF',
+  background: '#000428',
   width: '17%',
   marginLeft: 10,
   padding: 5,

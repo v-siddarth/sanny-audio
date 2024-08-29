@@ -46,10 +46,10 @@ const OutForDeliverySection = () => {
                 </BlueButton >
                 <GreenButton
                     onClick={() => {
-                        console.log("show")
+                        navigate("/Seller/orders/customers/" + row.productID)
                     }}
                 >
-                    Show Customers
+                    Show Customer
                 </GreenButton >
             </>
         );

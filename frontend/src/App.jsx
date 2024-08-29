@@ -13,6 +13,8 @@ import CustomerOrders from './pages/customer/pages/CustomerOrders';
 import CheckoutSteps from './pages/customer/pages/CheckoutSteps';
 import Profile from './pages/customer/pages/Profile';
 import Logout from './pages/Logout';
+import Aboutus from './pages/Aboutus';
+import Contact from './pages/Contact';
 import { isTokenValid } from './redux/userSlice';
 import CheckoutAftermath from './pages/customer/pages/CheckoutAftermath';
 import ViewOrder from './pages/customer/pages/ViewOrder';
@@ -81,6 +83,8 @@ const App = () => {
             <Route path="/Orders" element={<CustomerOrders />} />
             <Route path="/order/view/:id" element={<ViewOrder />} />
             <Route path="/Logout" element={<Logout />} />
+            <Route path="/aboutus" element={<Aboutus/>} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </>
       }
@@ -90,7 +94,7 @@ const App = () => {
           <SellerDashboard />
         </>
       )}
-
+      
     </BrowserRouter >
   )
 }
