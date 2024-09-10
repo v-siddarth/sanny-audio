@@ -38,7 +38,7 @@ If you encounter a network error while signing up, follow these steps to resolve
 2. Add the following line after the import statements:
 
 ```javascript
-const REACT_APP_BASE_URL = "http://localhost:5000";
+const REACT_APP_BASE_URL = "https://sanny-audio-backend.vercel.app";
 ```
 
 branch created
