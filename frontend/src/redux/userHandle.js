@@ -31,7 +31,7 @@ export const authUser = (fields, role, mode) => async (dispatch) => {
 
   try {
     const result = await axios.post(
-      `${"http://localhost:5000"}/${role}${mode}`,
+      `${"http://82.112.231.180:5000"}/${role}${mode}`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@ export const addStuff = (address, fields) => async (dispatch) => {
 
   try {
     const result = await axios.post(
-      `${"http://localhost:5000"}/${address}`,
+      `${"http://82.112.231.180:5000"}/${address}`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -72,7 +72,7 @@ export const addStuff = (address, fields) => async (dispatch) => {
 export const updateStuff = (fields, id, address) => async (dispatch) => {
   try {
     const result = await axios.put(
-      `${"http://localhost:5000"}/${address}/${id}`,
+      `${"http://82.112.231.180:5000"}/${address}/${id}`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -93,7 +93,7 @@ export const deleteStuff = (id, address) => async (dispatch) => {
 
   try {
     const result = await axios.delete(
-      `${"http://localhost:5000"}/${address}/${id}`
+      `${"http://82.112.231.180:5000"}/${address}/${id}`
     );
     if (result.data.message) {
       dispatch(getFailed(result.data.message));
@@ -113,7 +113,7 @@ export const updateCustomer = (fields, id) => async (dispatch) => {
 
   try {
     await axios.put(
-      `${"http://localhost:5000"}/CustomerUpdate/${id}`,
+      `${"http://82.112.231.180:5000"}/CustomerUpdate/${id}`,
       newFields,
       {
         headers: { "Content-Type": "application/json" },
@@ -131,7 +131,7 @@ export const getProductsbySeller = (id) => async (dispatch) => {
 
   try {
     const result = await axios.get(
-      `${"http://localhost:5000"}/getSellerProducts/${id}`
+      `${"http://82.112.231.180:5000"}/getSellerProducts/${id}`
     );
     if (result.data.message) {
       dispatch(getSellerProductsFailed(result.data.message));
@@ -147,7 +147,7 @@ export const getProducts = () => async (dispatch) => {
   dispatch(getRequest());
 
   try {
-    const result = await axios.get(`${"http://localhost:5000"}/getProducts`);
+    const result = await axios.get(`${"http://82.112.231.180:5000"}/getProducts`);
     if (result.data.message) {
       dispatch(getProductsFailed(result.data.message));
     } else {
@@ -163,7 +163,7 @@ export const getProductDetails = (id) => async (dispatch) => {
 
   try {
     const result = await axios.get(
-      `${"http://localhost:5000"}/getProductDetail/${id}`
+      `${"http://82.112.231.180:5000"}/getProductDetail/${id}`
     );
     if (result.data.message) {
       dispatch(getProductDetailsFailed(result.data.message));
@@ -180,7 +180,7 @@ export const getCustomers = (id, address) => async (dispatch) => {
 
   try {
     const result = await axios.get(
-      `${"http://localhost:5000"}/${address}/${id}`
+      `${"http://82.112.231.180:5000"}/${address}/${id}`
     );
     if (result.data.message) {
       dispatch(getCustomersListFailed(result.data.message));
@@ -196,7 +196,7 @@ export const getSpecificProducts = (id, address) => async (dispatch) => {
   dispatch(getRequest());
   try {
     const result = await axios.get(
-      `${"http://localhost:5000"}/${address}/${id}`
+      `${"http://82.112.231.180:5000"}/${address}/${id}`
     );
     if (result.data.message) {
       dispatch(getSpecificProductsFailed(result.data.message));
@@ -213,7 +213,7 @@ export const getSearchedProducts = (address, key) => async (dispatch) => {
 
   try {
     const result = await axios.get(
-      `${"http://localhost:5000"}/${address}/${key}`
+      `${"http://82.112.231.180:5000"}/${address}/${key}`
     );
     if (result.data.message) {
       dispatch(getSearchFailed(result.data.message));
